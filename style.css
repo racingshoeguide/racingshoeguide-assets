@@ -1,6 +1,7 @@
-<style>
+/* RacingShoeGuide.com - Main Stylesheet */
+/* Verified March 2026 */
 
-  :root {
+:root {
     --white: #ffffff;
     --off-white: #f7f5f2;
     --paper: #f0ede8;
@@ -245,5 +246,3 @@
   .skip-link { position:absolute; top:-50px; left:0; background:var(--red); color:white; padding:0.5rem 1rem; font-family:'Barlow Condensed',sans-serif; font-size:0.9rem; text-decoration:none; z-index:9999; transition:top 0.15s; }
   .skip-link:focus { top:0; }
   @media (max-width:900px) { .expert-inner { grid-template-columns:1fr; gap:1.5rem; } }
-
-  </style>
