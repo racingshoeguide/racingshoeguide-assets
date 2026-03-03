@@ -1,4 +1,4 @@
-/* RacingShoeGuide.com - Main Stylesheet - Updated March 2026 */
+/* RacingShoeGuide.com — Stylesheet — Updated March 2026 */
 
 :root {
   --white: #ffffff;
@@ -234,6 +234,16 @@ footer{background:var(--black);color:rgba(255,255,255,0.45);padding:3.5rem 2.5re
 /* ── ANIMATIONS ── */
 .fade-up{opacity:0;transform:translateY(10px);transition:opacity 0.45s,transform 0.45s}
 .fade-up.in{opacity:1;transform:none}
+
+/* ── WEBFLOW OVERRIDES — force correct backgrounds regardless of Webflow defaults ── */
+html, body { background: #f7f5f2 !important; }
+footer { background: #141210 !important; }
+footer, footer * { color: inherit; }
+.hero { background: #141210 !important; }
+nav { background: rgba(255,255,255,0.97) !important; }
+.faq-section { background: #f0ede8 !important; }
+.ticker { background: #d4200c !important; }
+section, main, div { box-sizing: border-box; }
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
