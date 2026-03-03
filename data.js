@@ -1,116 +1,266 @@
-// RacingShoeGuide — Shoe & Keyword Data
-// Data verified March 2026
+/* RacingShoeGuide.com — Full Stylesheet — March 2026 */
 
-const shoes = [
-  // ── Data verified March 2026 from Nike.com, Running Warehouse, Fleet Feet, Solereview, RunRepeat, The Run Testers ──
+:root {
+  --white: #ffffff;
+  --off-white: #f7f5f2;
+  --paper: #f0ede8;
+  --border: #e2ddd7;
+  --border-dark: #ccc8c0;
+  --mid: #9a9088;
+  --text-dim: #6b6560;
+  --text: #2a2420;
+  --black: #141210;
+  --red: #d4200c;
+  --red-light: #fdf0ee;
+  --red-dark: #a01808;
+  --gold: #c8960a;
+  --gold-light: #fdf6e3;
+  --green: #1a7a3c;
+  --green-light: #e8f5ee;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07),0 1px 3px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12),0 2px 8px rgba(0,0,0,0.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--off-white);color:var(--text);font-family:'Lora',Georgia,serif;font-size:15px;line-height:1.7;overflow-x:hidden}
 
-  { id:1,  brand:'Nike',        name:'Alphafly 3',
-    badge:'Maximum Propulsion', badgeType:'red',
-    use:'Dual carbon plate, Air Zoom pods. Built for sub-elite marathon ambitions.',
-    price:285, wasPrice:null, weight:'218g', drop:'8mm', stack:'40mm', plate:'Dual Carbon',
-    score:9.5, scoreColor:'#d4200c', distances:['Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','carbon'],
-    img:'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/5a6e9b23-1e99-4b35-8b3e-f0d88afe26b8/alphafly-3-road-racing-shoes-ZqLMKB.png', fb:'🏆' },
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:baseline;text-decoration:none}
+.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:1px;color:var(--black);text-transform:uppercase}
+.nav-logo-text span{color:var(--red)}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;padding:0.4rem 0.9rem;border-radius:var(--radius-sm);transition:all 0.15s}
+.nav-links a:hover{color:var(--red);background:var(--red-light)}
+.nav-compare-count{background:var(--red);color:white;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.5px;padding:0.3rem 0.9rem;border-radius:100px;cursor:pointer;display:none;transition:opacity 0.15s}
+.nav-compare-count:hover{opacity:0.85}
+.nav-compare-count.show{display:block}
 
-  { id:2,  brand:'ASICS',       name:'Metaspeed Sky Tokyo',
-    badge:"Editors' Pick 2026", badgeType:'red',
-    use:'FF Leap + FF Turbo+ dual foam. Top-rated racer of 2025–26. Best for forefoot strikers.',
-    price:270, wasPrice:null, weight:'163g', drop:'5mm', stack:'39mm', plate:'Full Carbon',
-    score:9.5, scoreColor:'#d4200c', distances:['5K','10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://images.asics.com/is/image/asics/1013A117_400_SR_RT_GLB?$zoom$', fb:'🚀' },
+/* ── HERO ── */
+.hero{background:var(--black);position:relative;overflow:hidden;padding:4rem 2.5rem 3.5rem}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(212,32,12,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,32,12,0.05) 1px,transparent 1px);background-size:60px 60px}
+.hero-stripe{position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--red)}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
+.hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:4px;color:var(--red);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.hero-eyebrow::before{content:'';width:20px;height:2px;background:var(--red);display:block}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:900;line-height:0.92;text-transform:uppercase;letter-spacing:1px;color:white;margin-bottom:1.25rem}
+.hero h1 .accent{color:var(--red);font-style:italic}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.5);max-width:460px;margin-bottom:1.75rem;font-style:italic;line-height:1.7}
+.hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap}
+.btn-red{background:var(--red);color:white;border:none;padding:0.7rem 1.75rem;border-radius:var(--radius-sm);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background 0.15s,transform 0.15s}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.2);padding:0.7rem 1.75rem;border-radius:var(--radius-sm);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.15s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.45);color:white}
+.hero-quick-answer{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:1.25rem 1.5rem;max-width:320px}
+.hqa-label{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--red);margin-bottom:0.5rem}
+.hqa-text{font-family:'Lora',serif;font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.65;font-style:italic}
+.hqa-text strong{color:white;font-style:normal}
 
-  { id:3,  brand:'Puma',        name:'Fast-R Nitro Elite 3',
-    badge:'Lab-Proven Fastest', badgeType:'red',
-    use:'Nitro Elite A-TPU foam. Study-proven 3.15–3.62% efficiency gain over Alphafly 3.',
-    price:300, wasPrice:null, weight:'187g', drop:'8mm', stack:'39mm', plate:'Full Carbon',
-    score:9.4, scoreColor:'#d4200c', distances:['5K','10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_450/global/378761/01/sv01/fnd/PNA/fmt/png', fb:'⚡' },
+/* ── TICKER ── */
+.ticker{background:var(--red);padding:0.5rem 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:ticker 35s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.9);padding:0 2rem;display:flex;align-items:center;gap:1rem}
+.ticker-item::after{content:'◆';font-size:0.35rem;opacity:0.5}
 
-  { id:4,  brand:'Nike',        name:'Vaporfly 4',
-    badge:'Most Versatile', badgeType:'gold',
-    use:'Lighter than V3. Lower 6mm drop, higher plate angle. Best all-round racer for most runners.',
-    price:260, wasPrice:null, weight:'186g', drop:'6mm', stack:'35mm', plate:'Carbon Flyplate',
-    score:9.2, scoreColor:'#d4200c', distances:['5K','10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/99486859-0ff3-46b4-949b-2d16af2ad421/vaporfly-3-road-racing-shoes-m5rr3B.png', fb:'👟' },
+/* ── HOW IT WORKS ── */
+.how-bar{background:white;border-bottom:1px solid var(--border);padding:1rem 2.5rem}
+.how-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.how-step{display:flex;align-items:center;gap:0.65rem;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-dim)}
+.how-num{width:22px;height:22px;border-radius:50%;background:var(--red);color:white;font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.how-arrow{color:var(--border-dark);font-size:1rem;margin:0 0.25rem}
 
-  { id:5,  brand:'Adidas',      name:'Adizero Adios Pro 4',
-    badge:'Most Improved', badgeType:'green',
-    use:'Lighter, softer Lightstrike Pro A-TPU foam. Energy Rods 2.0. Best for midfoot/forefoot strikers.',
-    price:300, wasPrice:null, weight:'200g', drop:'6mm', stack:'39mm', plate:'Carbon Energy Rods 2.0',
-    score:9.2, scoreColor:'#d4200c', distances:['10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/68ae7ea7aacd4a9ead39aec20121fae8_9366/Adizero_Adios_Pro_3_Shoes_White_GX6251_01_standard.jpg', fb:'🔵' },
+/* ── FILTER BAR ── */
+.filter-bar{background:white;border-bottom:1px solid var(--border);position:sticky;top:60px;z-index:90;padding:0 2.5rem}
+.filter-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none}
+.filter-inner::-webkit-scrollbar{display:none}
+.filter-tab{font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);padding:0.85rem 1.1rem;border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all 0.15s}
+.filter-tab:hover{color:var(--red)}
+.filter-tab.active{color:var(--red);border-bottom-color:var(--red)}
 
-  { id:6,  brand:'Saucony',     name:'Endorphin Elite 2',
-    badge:'NEW 2025', badgeType:'green',
-    use:'Incredirun A-TPU foam. Ultra-soft, deeply cushioned marathon weapon. 80%+ energy return.',
-    price:290, wasPrice:null, weight:'213g', drop:'8mm', stack:'40mm', plate:'Carbon',
-    score:9.1, scoreColor:'#d4200c', distances:['Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','carbon'],
-    img:'https://images.saucony.com/is/image/Saucony/S20756-130_1?$pdpFlexLarge$&wid=580&hei=420', fb:'🔴' },
+/* ── MAIN ── */
+.main{max-width:1180px;margin:0 auto;padding:2.5rem 2.5rem 5rem}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:0.9rem;border-bottom:1px solid var(--border)}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--red);margin-bottom:0.15rem}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--black);line-height:1}
+.sort-wrap{display:flex;align-items:center;gap:0.5rem}
+.sort-label{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--mid)}
+.sort-select{background:white;border:1px solid var(--border);color:var(--text);padding:0.35rem 0.7rem;border-radius:var(--radius-sm);font-size:0.78rem;font-family:'Barlow Condensed',sans-serif;cursor:pointer}
+.results-meta{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;color:var(--mid);letter-spacing:0.5px;margin-bottom:1.25rem;margin-top:-0.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.verified-badge{color:var(--green);font-weight:700}
 
-  { id:7,  brand:'New Balance', name:'SC Elite V5',
-    badge:null, badgeType:null,
-    use:'100% PEBA FuelCell. Lighter and faster than V4. Natural, stable feel for marathon distance.',
-    price:250, wasPrice:null, weight:'210g', drop:'4mm', stack:'38mm', plate:'Carbon',
-    score:9.0, scoreColor:'#c8960a', distances:['Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','carbon'],
-    img:'https://nb.scene7.com/is/image/NB/MRCELPK4_nb_02_i?$pdpflexf2$&qlt=70&fmt=webp&wid=880&hei=660', fb:'🌊' },
+/* ── SHOE GRID ── */
+.shoe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem;margin-bottom:4rem}
 
-  { id:8,  brand:'Saucony',     name:'Endorphin Pro 4',
-    badge:'Best for Heel Strikers', badgeType:'gold',
-    use:'Most stable super shoe. Wide base, carbon plate. Top pick for heel strikers at any distance.',
-    price:225, wasPrice:null, weight:'215g', drop:'8mm', stack:'38mm', plate:'Carbon',
-    score:8.9, scoreColor:'#c8960a', distances:['10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://images.saucony.com/is/image/Saucony/S20921-100_1?$pdpFlexLarge$&wid=580&hei=420', fb:'🟡' },
+/* ── CARD ── */
+.shoe-card{background:white;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:box-shadow 0.2s,transform 0.2s,border-color 0.2s;position:relative;cursor:pointer;box-shadow:var(--shadow)}
+.shoe-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--border-dark)}
+.shoe-card.selected{border-color:var(--red);box-shadow:0 0 0 2px var(--red),var(--shadow-lg)}
+.card-top{background:var(--paper);position:relative;border-bottom:1px solid var(--border);height:195px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.shoe-img{width:100%;height:100%;object-fit:contain;padding:1rem 1.5rem;transition:transform 0.3s ease;display:block}
+.shoe-card:hover .shoe-img{transform:scale(1.04)}
+.img-fallback{display:none;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;gap:0.4rem}
+.img-fallback .fb-emoji{font-size:3.5rem}
+.img-fallback .fb-label{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--mid)}
+.card-badges{position:absolute;top:0.65rem;left:0.65rem;display:flex;gap:0.35rem;z-index:2}
+.badge{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:0.18rem 0.5rem;border-radius:3px}
+.badge-red{background:var(--red);color:white}
+.badge-gold{background:var(--gold);color:white}
+.badge-green{background:var(--green);color:white}
+/* Select button — top right of card */
+.card-select-btn{position:absolute;top:0.65rem;right:0.65rem;z-index:2;width:26px;height:26px;border-radius:50%;border:2px solid var(--border-dark);background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;font-size:11px;font-weight:800;color:transparent}
+.shoe-card.selected .card-select-btn{background:var(--red);border-color:var(--red);color:white}
+/* Score gauge */
+.speed-gauge{position:absolute;bottom:0.5rem;right:0.5rem;z-index:2;width:64px;height:64px}
+.gauge-svg{width:100%;height:100%}
+.gauge-bg{fill:none;stroke:rgba(0,0,0,0.1);stroke-width:5}
+.gauge-fill{fill:none;stroke-width:5;stroke-linecap:round}
+.gauge-label{font-family:'Barlow Condensed',sans-serif;font-size:0.55rem;font-weight:700;text-anchor:middle;dominant-baseline:middle;fill:#9a9088}
+.gauge-num{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:900;text-anchor:middle;dominant-baseline:middle}
+/* Card body */
+.card-body{padding:1rem 1.15rem 1.15rem}
+.card-brand{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--mid);margin-bottom:0.1rem}
+.card-name{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;color:var(--black);line-height:1.1;margin-bottom:0.2rem;text-transform:uppercase;letter-spacing:0.5px}
+.card-use{font-size:0.76rem;color:var(--text-dim);font-style:italic;margin-bottom:0.85rem;font-family:'Lora',serif;line-height:1.5}
+.spec-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:0.85rem}
+.spec-cell{padding:0.5rem 0.35rem;text-align:center;border-right:1px solid var(--border)}
+.spec-cell:last-child{border-right:none}
+.spec-cell-label{font-family:'Barlow Condensed',sans-serif;font-size:0.54rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mid);margin-bottom:0.1rem}
+.spec-cell-val{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;color:var(--black);line-height:1}
+.race-distances{display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.85rem}
+.dist-pill{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:0.15rem 0.45rem;border-radius:3px;background:var(--red-light);color:var(--red);border:1px solid rgba(212,32,12,0.15)}
+.dist-pill.trail{background:var(--green-light);color:var(--green);border-color:rgba(26,122,60,0.15)}
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.85rem;border-top:1px solid var(--border)}
+.card-price-label{font-family:'Barlow Condensed',sans-serif;font-size:0.56rem;text-transform:uppercase;letter-spacing:1px;color:var(--mid)}
+.card-price{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;color:var(--black);line-height:1}
+.card-price .was{font-size:0.78rem;color:var(--mid);text-decoration:line-through;font-weight:400;margin-right:0.25rem;font-family:'Lora',serif}
+.card-buy-btn{background:var(--red);color:white;border:none;padding:0.5rem 1rem;border-radius:var(--radius-sm);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background 0.15s}
+.card-buy-btn:hover{background:var(--red-dark)}
 
-  { id:9,  brand:'Brooks',      name:'Hyperion Elite 5',
-    badge:null, badgeType:null,
-    use:'DNA Gold PEBA foam, Speedvault carbon plate. Stable, natural ride. Best for controlled racers.',
-    price:275, wasPrice:null, weight:'196g', drop:'6mm', stack:'38mm', plate:'Carbon',
-    score:8.8, scoreColor:'#c8960a', distances:['10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://www.brooksrunning.com/dw/image/v2/BGPB_PRD/on/demandware.static/-/Sites-brooks-master-catalog/default/dwd6e38bce/images/110396/110396-165-l-hyperion-elite-4-road-racing-shoe.png?sw=500&sh=375&sm=fit', fb:'🦅' },
+/* ── COMPARE BAR (bottom) ── */
+.compare-bar{position:fixed;bottom:0;left:0;right:0;background:var(--black);border-top:3px solid var(--red);padding:0.85rem 2.5rem;display:flex;align-items:center;justify-content:space-between;z-index:200;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 -4px 24px rgba(0,0,0,0.3)}
+.compare-bar.visible{transform:translateY(0)}
+.cb-left{display:flex;align-items:center;gap:1.25rem}
+.cb-label{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.35)}
+.cb-chips{display:flex;gap:0.45rem;align-items:center;flex-wrap:wrap}
+.cb-chip{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:0.3rem 0.7rem;font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:600;color:white;display:flex;align-items:center;gap:0.4rem}
+.cb-chip-x{cursor:pointer;color:rgba(255,255,255,0.35);font-size:1rem;line-height:1}
+.cb-chip-x:hover{color:var(--red)}
+.cb-empty{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.2);letter-spacing:1px;font-style:italic}
+.cb-right{display:flex;gap:0.65rem;align-items:center}
+.cb-count{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.35);letter-spacing:1px}
+.cb-btn{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;border-radius:var(--radius-sm);padding:0.55rem 1.4rem;transition:all 0.15s}
+.cb-btn-go{background:var(--red);color:white}
+.cb-btn-go:hover{background:var(--red-dark)}
+.cb-btn-clear{background:transparent;color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.1)}
+.cb-btn-clear:hover{color:white;border-color:rgba(255,255,255,0.3)}
 
-  { id:10, brand:'Puma',        name:'Deviate Nitro Elite 4',
-    badge:null, badgeType:null,
-    use:'Dramatically lighter than Elite 3 (169g). Stable, fast, forgiving. Excellent all-rounder.',
-    price:230, wasPrice:null, weight:'169g', drop:'8mm', stack:'38mm', plate:'Carbon',
-    score:8.9, scoreColor:'#c8960a', distances:['5K','10K','Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','10k','carbon'],
-    img:'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_450/global/378761/01/sv01/fnd/PNA/fmt/png', fb:'🐆' },
+/* ── COMPARE MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto;backdrop-filter:blur(8px)}
+.modal-overlay.open{display:flex}
+.modal{background:white;border-radius:var(--radius);width:100%;max-width:1040px;margin:auto;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.35);animation:modalIn 0.22s ease}
+@keyframes modalIn{from{transform:translateY(14px) scale(0.98);opacity:0}to{transform:none;opacity:1}}
+.modal-header{background:var(--black);padding:1.4rem 2rem;display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:2px;color:white}
+.modal-title span{color:var(--red)}
+.modal-close{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.55);width:32px;height:32px;border-radius:var(--radius-sm);cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.modal-close:hover{background:var(--red);border-color:var(--red);color:white}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th{background:var(--paper);padding:0}
+.shoe-th{padding:1.4rem 1.2rem;text-align:center;border-left:1px solid var(--border)}
+.shoe-th:first-child{border-left:none}
+.th-brand{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--mid);margin-bottom:0.12rem}
+.th-name{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:900;text-transform:uppercase;color:var(--black);margin-bottom:0.6rem}
+.th-price{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;color:var(--red);margin-bottom:0.4rem}
+.th-buy{display:inline-block;background:var(--red);color:white;padding:0.35rem 0.9rem;border-radius:var(--radius-sm);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.75rem;text-decoration:none;letter-spacing:1px;text-transform:uppercase}
+.row-label-th{width:130px;text-align:left;padding:0 1.2rem}
+.compare-table td{padding:0.75rem 1.2rem;border-bottom:1px solid var(--border);border-left:1px solid var(--border);text-align:center;font-size:0.88rem}
+.compare-table td:first-child{text-align:left;border-left:none;background:var(--paper);font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mid)}
+.compare-table tr:hover td{background:rgba(212,32,12,0.02)}
+.compare-table tr:hover td:first-child{background:var(--paper)}
+.best-val{color:var(--red);font-weight:700;font-family:'Barlow Condensed',sans-serif;font-size:0.95rem}
+.best-val::after{content:' &#x2713;';font-size:0.7rem}
 
-  { id:11, brand:'Hoka',        name:'Rocket X3',
-    badge:null, badgeType:null,
-    use:'Hoka's most stable carbon racer. Wide base, controlled ride. Great for longer distances.',
-    price:250, wasPrice:null, weight:'208g', drop:'7mm', stack:'39mm', plate:'Carbon',
-    score:8.7, scoreColor:'#c8960a', distances:['Half','Marathon'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['marathon','half','carbon'],
-    img:'https://images.hoka.com/is/image/hoka/1127896-BWHT_1?$pdp-gallery-2x$', fb:'🚁' },
+/* ── GUIDE CARDS ── */
+.guides-section{margin-bottom:4rem}
+.guides-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.guide-card{background:white;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;text-decoration:none;transition:box-shadow 0.2s,transform 0.2s;box-shadow:var(--shadow)}
+.guide-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.guide-card-top{height:150px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.guide-card-body{padding:1.15rem}
+.guide-cat{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--red);margin-bottom:0.35rem}
+.guide-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--black);text-transform:uppercase;letter-spacing:0.5px;line-height:1.25;margin-bottom:0.4rem}
+.guide-meta{font-size:0.73rem;color:var(--mid);font-style:italic;font-family:'Lora',serif}
 
-  { id:12, brand:'Saucony',     name:'Endorphin Speed 4',
-    badge:'Best Value', badgeType:'red',
-    use:'Nylon plate, not carbon — but delivers most of the super shoe feel at 35% less cost.',
-    price:170, wasPrice:185, weight:'213g', drop:'8mm', stack:'37mm', plate:'Nylon',
-    score:8.5, scoreColor:'#c8960a', distances:['5K','10K','Half'], trail:false,
-    affiliateUrl:'https://amzn.to/YOUR-LINK', cats:['half','10k','budget'],
-    img:'https://images.saucony.com/is/image/Saucony/S20921-100_1?$pdpFlexLarge$&wid=580&hei=420', fb:'💛' }
-]
-];
+/* ── FAQ ── */
+.faq-section{background:var(--paper);border-top:1px solid var(--border);padding:4rem 2.5rem 5rem}
+.faq-inner{max-width:780px;margin:0 auto}
+.faq-head{margin-bottom:2.25rem}
+.faq-section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:var(--red);margin-bottom:0.3rem}
+.faq-section-title{font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:900;text-transform:uppercase;color:var(--black)}
+.faq-section-sub{font-family:'Lora',serif;font-size:0.85rem;color:var(--text-dim);font-style:italic;margin-top:0.35rem}
+.faq-item{border-bottom:1px solid var(--border-dark)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;cursor:pointer;gap:1rem;list-style:none}
+.faq-q-text{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--black);line-height:1.3}
+.faq-icon{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;color:var(--red);flex-shrink:0;transition:transform 0.2s;line-height:1}
+.faq-icon.open{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.32s ease,padding 0.32s}
+.faq-a.open{max-height:600px;padding-bottom:1.15rem}
+.faq-a p{font-family:'Lora',serif;font-size:0.88rem;line-height:1.8;color:var(--text-dim)}
+.faq-a strong{color:var(--text);font-style:normal}
 
-const keywords = [
-  { kw:'best carbon plate running shoes 2026', vol:'22,000', kd:42, intent:'Buy', page:'Homepage / Pillar Post', pri:'HIGH' },
-  { kw:'vaporfly vs alphafly', vol:'8,100', kd:28, intent:'Research', page:'/vaporfly-vs-alphafly', pri:'HIGH' },
-  { kw:'nike vaporfly 3 review', vol:'6,600', kd:35, intent:'Research/Buy', page:'/nike-vaporfly-3-review', pri:'HIGH' },
-  { kw:'best marathon running shoes', vol:'14,800', kd:55, intent:'Buy', page:'/best-marathon-shoes', pri:'MED' },
-  { kw:'adidas adizero adios pro 3 review', vol:'4,400', kd:22, intent:'Research/Buy', page:'/adizero-adios-pro-3-review', pri:'HIGH' },
-  { kw:'carbon plate shoe vs regular', vol:'3,600', kd:18, intent:'Info', page:'/carbon-plate-explained', pri:'HIGH' },
-  { kw:'best racing shoes half marathon', vol:'5,400', kd:31, intent:'Buy', page:'/best-half-marathon-shoes', pri:'HIGH' },
-  { kw:'lightest running shoes 2026', vol:'4,200', kd:29, intent:'Buy', page:'Comparison Tool', pri:'MED' },
-  { kw:'garmin forerunner 965 review', vol:'9,900', kd:38, intent:'Research/Buy', page:'/garmin-forerunner-965-review', pri:'HIGH' },
-  { kw:'best gps watch for marathon runners', vol:'3,300', kd:24, intent:'Buy', page:'/best-gps-watches-runners', pri:'HIGH' },
-];
+/* ── DISCLOSURE ── */
+.disclosure{background:var(--gold-light);border:1px solid rgba(200,150,10,0.2);border-radius:var(--radius-sm);padding:0.7rem 1rem;font-size:0.75rem;color:#7a6010;font-family:'Lora',serif;font-style:italic}
+
+/* ── FOOTER ── */
+footer{background:var(--black);color:rgba(255,255,255,0.45);padding:3.5rem 2.5rem 2rem}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-disclosure{background:rgba(200,150,10,0.07);border:1px solid rgba(200,150,10,0.12);border-radius:var(--radius-sm);padding:0.75rem 1rem;font-size:0.74rem;color:rgba(255,255,255,0.35);margin-bottom:2.5rem;font-family:'Lora',serif;font-style:italic}
+.footer-disclosure strong{color:rgba(255,255,255,0.55)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;letter-spacing:1px;color:white;text-transform:uppercase;margin-bottom:0.65rem;display:block}
+.footer-logo span{color:var(--red)}
+.footer-about{font-size:0.8rem;line-height:1.7;max-width:260px;font-family:'Lora',serif;font-style:italic}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,0.25);margin-bottom:0.85rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.45rem}
+.footer-col ul a{color:rgba(255,255,255,0.45);text-decoration:none;font-size:0.82rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;transition:color 0.15s}
+.footer-col ul a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:1.35rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.65rem}
+.footer-legal{font-size:0.7rem;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(10px);transition:opacity 0.45s,transform 0.45s}
+.fade-up.in{opacity:1;transform:none}
+
+/* ── WEBFLOW OVERRIDES — force correct backgrounds regardless of Webflow defaults ── */
+html, body { background: #f7f5f2 !important; }
+footer { background: #141210 !important; }
+footer, footer * { color: inherit; }
+.hero { background: #141210 !important; }
+nav { background: rgba(255,255,255,0.97) !important; }
+.faq-section { background: #f0ede8 !important; }
+.ticker { background: #d4200c !important; }
+section, main, div { box-sizing: border-box; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-quick-answer{display:none}
+  .guides-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .how-inner{gap:1rem}
+}
+@media(max-width:600px){
+  .shoe-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  nav{padding:0 1.25rem}
+  .main{padding:2rem 1.25rem 4rem}
+  .hero{padding:3rem 1.25rem 2.5rem}
+  .filter-bar{padding:0 1.25rem}
+  .compare-bar{padding:0.75rem 1.25rem}
+  .faq-section{padding:3rem 1.25rem 4rem}
+}
